@@ -25,4 +25,15 @@ router.post("/api/notes", (req, res) => {
 });
 
 
+router.delete("/api/notes/:id", (req, res) => {
+  // get notes array
+  const notes = JSON.parse(fs.readFileSync("./db/db.json"));
+  // select id of the entered url id
+  const id = req.params.id;
+  // Filter out the selected id
+  const updatedNotes = notes.filter((note) => note.id !== id);
+  fs.writeFileSync("./db/db.json", JSON.stringify(updatedNotes));
+  res.json(updatedNotes);
+});
+
 module.exports = router;
