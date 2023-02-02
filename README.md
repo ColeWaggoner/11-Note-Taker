@@ -23,7 +23,7 @@
   
   
   ## Usage
-  Go to LINK to use
+  Go to https://hidden-thicket-35943.herokuapp.com/ to use
   
   
   ## Contributions
