@@ -13,5 +13,15 @@ router.get("/api/notes", (req, res) =>
   })
 );
 
+router.post("/api/notes", (req, res) => {
+  const noteList = JSON.parse(fs.readFileSync("./db/db.json"));
+  // Adds new note by reading the request body
+  const addNote = req.body;
+  // Adds random ID to note
+  addNote.id = uuid.v4();
+  notes.push(addNote);
+  fs.writeFileSync("./db/db.json", JSON.stringify(notes));
+  res.json(noteList);
+});
 
 module.exports = router;
